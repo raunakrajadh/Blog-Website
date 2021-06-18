@@ -6,6 +6,8 @@ const articleRouter = require('./routes/articles');
 const Article = require('./models/article');
 const config = require('./config.json')
 
+let port = process.env.PORT || 5000
+
 mongoose.connect(config.MongoDB, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -23,4 +25,4 @@ app.get('/', async (req, res) => {
 });
 
 app.use('/articles', articleRouter)
-app.listen(5000, () => {console.log('Running at http://localhost:5000/')});
+app.listen(port, () => {console.log('Running at port: ' + port)});
